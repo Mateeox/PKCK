@@ -1,0 +1,91 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PKCK"
+        xmlns:Classes="clr-namespace:PKCK.Classes" x:Class="PKCK.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="763">
+            <TabItem Header="Document info">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Authors" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <DataGrid x:Name="authors" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" Margin="10,31,0,0" BeginningEdit="Authors_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding firstname}" Header="First name"/>
+                            <DataGridTextColumn Binding="{Binding lastname}" Header="Last name"/>
+                            <DataGridTextColumn Binding="{Binding creationDate}" Header="Creation date"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,136,0,0" TextWrapping="Wrap" Text="Last modification" VerticalAlignment="Top" Width="101"/>
+                    <DataGrid x:Name="modification" HorizontalAlignment="Left" Height="60" Margin="10,157,0,0" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" BeginningEdit="Modification_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding firstname}" Header="First name"/>
+                            <DataGridTextColumn Binding="{Binding lastname}" Header="Last name"/>
+                            <DataGridTextColumn Binding="{Binding modificationDate}" Header="Modification date"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="info" Content="Save" HorizontalAlignment="Left" Margin="672,341,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Save_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Customers">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="customers" HorizontalAlignment="Left" Height="326" Margin="10,10,0,0" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" BeginningEdit="Customers_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding customerId}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding firstname}" Header="First name"/>
+                            <DataGridTextColumn Binding="{Binding lastname}" Header="Last name"/>
+                            <DataGridTextColumn Binding="{Binding companyId}" Header="Company"/>
+                            <DataGridTextColumn Binding="{Binding address}" Header="Address"/>
+                            <DataGridTextColumn Binding="{Binding address2}" Header="Address 2"/>
+                            <DataGridTextColumn Binding="{Binding zipCode}" Header="Zip code"/>
+                            <DataGridTextColumn Binding="{Binding countryCode}" Header="Country"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="custom" Content="Save" HorizontalAlignment="Left" Margin="672,341,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Save_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Products">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="products" HorizontalAlignment="Left" Height="326" Margin="10,10,0,0" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" BeginningEdit="Products_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding productId}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding name}" Header="Name"/>
+                            <DataGridTextColumn Binding="{Binding producer}" Header="Producer"/>
+                            <DataGridTextColumn Binding="{Binding price.type}" Header="Currency"/>
+                            <DataGridTextColumn Binding="{Binding price.value}" Header="Price"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="prod" Content="Save" HorizontalAlignment="Left" Margin="672,341,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Save_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Invoices">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="invoices" HorizontalAlignment="Left" Height="326" Margin="10,10,0,0" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" GotFocus="Invoices_GotFocus" BeginningEdit="Invoices_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding invoiceNumber}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding invoiceCustomer.customerRef}" Header="Customer ID"/>
+                            <DataGridTextColumn Binding="{Binding invoiceDate}" Header="Date"/>
+                            <DataGridTextColumn Binding="{Binding additionalText}" Header="Company"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="inv" Content="Save" HorizontalAlignment="Left" Margin="672,341,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Save_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem  x:Name="lines" Header="Invoice Lines" IsEnabled="False">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="invoicelines" HorizontalAlignment="Left" Height="326" Margin="10,10,0,0" VerticalAlignment="Top" Width="737" AutoGenerateColumns="False" BeginningEdit="Invoicelines_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding invoiceProduct.productRef}" Header="Product ID"/>
+                            <DataGridTextColumn Binding="{Binding quantity}" Header="Quantity"/>
+                            <DataGridTextColumn Binding="{Binding vatValue}" Header="Vat Value"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="invline" Content="Save" HorizontalAlignment="Left" Margin="672,341,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Save_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
