@@ -13,5 +13,6 @@ namespace PKCK.Classes
         public customer[] customers;
         public product[] products;
         public invoice[] invoices;
+        public currency[] currencies;
     }
 }
